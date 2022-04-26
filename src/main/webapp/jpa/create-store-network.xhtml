@@ -14,9 +14,10 @@
     <h:form>
         <div>
             <h:outputLabel for="name">Name of the store network: </h:outputLabel>
-            <h:inputText id="name" value="#{storeNetworksJPA.storeNetworkToCreate.name}" required="true" />
+            <h:inputText id="name" value="#{storeNetworksJPA.storeNetworkToCreate.name}" required="true"/>
         </div>
-        <h:commandButton value="Add new store network" actionListener="#{storeNetworksJPA.createStoreNetwork}" action="/index?faces-redirect=true"/>
+        <h:commandButton value="Add new store network" actionListener="#{storeNetworksJPA.createStoreNetwork}"
+                         action="/index?faces-redirect=true"/>
     </h:form>
 </h:body>
 

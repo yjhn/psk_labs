@@ -36,10 +36,10 @@ public class City {
 
     @Override
     public boolean equals(Object other) {
-        if(other == null) {
+        if (other == null) {
             return false;
         }
-        if(!(other instanceof City o)) {
+        if (!(other instanceof City o)) {
             return false;
         }
         return o.id == this.id;

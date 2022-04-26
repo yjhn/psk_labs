@@ -1,6 +1,5 @@
 package lab1.jpa.persistence;
 
-import lab1.jpa.entities.City;
 import lab1.jpa.entities.StoreNetwork;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,7 +16,7 @@ public class StoreNetworksDAO {
         return em.createNamedQuery("StoreNetwork.findAll", StoreNetwork.class).getResultList();
     }
 
-    public void persist(StoreNetwork storeNetwork){
+    public void persist(StoreNetwork storeNetwork) {
         em.persist(storeNetwork);
     }
 

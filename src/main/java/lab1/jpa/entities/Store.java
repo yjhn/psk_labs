@@ -31,10 +31,10 @@ public class Store {
 
     @Override
     public boolean equals(Object other) {
-        if(other == null) {
+        if (other == null) {
             return false;
         }
-        if(!(other instanceof Store o)) {
+        if (!(other instanceof Store o)) {
             return false;
         }
         return o.id == this.id;

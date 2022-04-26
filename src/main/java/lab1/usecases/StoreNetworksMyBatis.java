@@ -29,7 +29,7 @@ public class StoreNetworksMyBatis {
     private List<StoreNetwork> allStoreNetworks;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadAllStores();
         storeNetworkToCreate.setName(nameGenerator.generateStoreNetworkName());
     }
@@ -39,11 +39,11 @@ public class StoreNetworksMyBatis {
     }
 
     @Transactional
-    public void createStoreNetwork(){
+    public void createStoreNetwork() {
         networkMapper.insert(storeNetworkToCreate);
     }
 
-    private void loadAllStores(){
+    private void loadAllStores() {
         allStoreNetworks = networkMapper.selectAll();
     }
 }

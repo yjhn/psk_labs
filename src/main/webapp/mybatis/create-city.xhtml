@@ -13,14 +13,15 @@
     </nav>
     <h:form>
         <div>
-        <h:outputLabel for="name">Name of the city: </h:outputLabel>
-        <h:inputText id="name" value="#{citiesMyBatis.cityToCreate.name}" required="true" />
+            <h:outputLabel for="name">Name of the city: </h:outputLabel>
+            <h:inputText id="name" value="#{citiesMyBatis.cityToCreate.name}" required="true"/>
         </div>
         <div>
             <h:outputLabel for="country">Name of the country the city is in: </h:outputLabel>
-            <h:inputText id="country" value="#{citiesMyBatis.cityToCreate.countryName1}" required="true" />
+            <h:inputText id="country" value="#{citiesMyBatis.cityToCreate.countryName1}" required="true"/>
         </div>
-        <h:commandButton value="Add new city" actionListener="#{citiesMyBatis.createCity}" action="cities?faces-redirect=true"/>
+        <h:commandButton value="Add new city" actionListener="#{citiesMyBatis.createCity}"
+                         action="cities?faces-redirect=true"/>
     </h:form>
 </h:body>
 

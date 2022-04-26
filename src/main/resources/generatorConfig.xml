@@ -11,19 +11,19 @@
                         password="sa">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="lab1.mybatis.model" targetProject="MAVEN" />
+        <javaModelGenerator targetPackage="lab1.mybatis.model" targetProject="MAVEN"/>
 
-        <sqlMapGenerator targetPackage="lab1.mybatis.xml" targetProject="MAVEN" />
-        <javaClientGenerator type="XMLMAPPER" targetPackage="lab1.mybatis.dao" targetProject="MAVEN" />
+        <sqlMapGenerator targetPackage="lab1.mybatis.xml" targetProject="MAVEN"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="lab1.mybatis.dao" targetProject="MAVEN"/>
 
         <table schema="public" tableName="store">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
         </table>
         <table schema="public" tableName="store_network">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
         </table>
         <table schema="public" tableName="city">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
         </table>
     </context>
 </generatorConfiguration>

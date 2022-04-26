@@ -16,7 +16,7 @@ public class CitiesDAO {
         return em.createNamedQuery("City.findAll", City.class).getResultList();
     }
 
-    public void persist(City city){
+    public void persist(City city) {
         em.persist(city);
     }
 

@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @NamedQueries({
@@ -29,10 +32,10 @@ public class StoreNetwork {
 
     @Override
     public boolean equals(Object other) {
-        if(other == null) {
+        if (other == null) {
             return false;
         }
-        if(!(other instanceof StoreNetwork o)) {
+        if (!(other instanceof StoreNetwork o)) {
             return false;
         }
         return o.id == this.id;

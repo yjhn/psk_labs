@@ -29,7 +29,7 @@ public class StoreNetworksJPA {
     private List<StoreNetwork> allStoreNetworks;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadAllNetworks();
         storeNetworkToCreate.setName(nameGenerator.generateStoreNetworkName());
     }
@@ -43,7 +43,7 @@ public class StoreNetworksJPA {
         networksDAO.persist(storeNetworkToCreate);
     }
 
-    private void loadAllNetworks(){
+    private void loadAllNetworks() {
         allStoreNetworks = networksDAO.loadAll();
     }
 }

@@ -1,7 +1,6 @@
 package lab1.services;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 
 /**
@@ -11,18 +10,19 @@ import java.io.Serializable;
 public class CityFullNameCreator implements Serializable {
     /**
      * Assigns full city name based on city's name and country's name (JPA version).
+     *
      * @param city city to which full names should be assigned
      */
     public void createFullCityName(lab1.jpa.entities.City city) {
-        if(city == null) {
+        if (city == null) {
             throw new NullPointerException("Supplied city is null");
         }
         String cityName = city.getName();
-        if(cityName == null) {
+        if (cityName == null) {
             throw new NullPointerException("City's name is null");
         }
         String countryName = city.getCountryName();
-        if(countryName == null) {
+        if (countryName == null) {
             throw new NullPointerException("Country's name is null");
         }
 
@@ -31,18 +31,19 @@ public class CityFullNameCreator implements Serializable {
 
     /**
      * Assigns full city name based on city's name and country's name (MyBatis version).
+     *
      * @param city city to which full names should be assigned
      */
     public void createFullCityName(lab1.mybatis.model.City city) {
-        if(city == null) {
+        if (city == null) {
             throw new NullPointerException("Supplied city is null");
         }
         String cityName = city.getName();
-        if(cityName == null) {
+        if (cityName == null) {
             throw new NullPointerException("City's name is null");
         }
         String countryName = city.getCountryName1();
-        if(countryName == null) {
+        if (countryName == null) {
             throw new NullPointerException("Country's name is null");
         }
 

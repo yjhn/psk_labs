@@ -18,7 +18,7 @@ public class StoresDAO {
         return em.createNamedQuery("Store.findAll", Store.class).getResultList();
     }
 
-    public void persist(Store store){
+    public void persist(Store store) {
         em.persist(store);
     }
 

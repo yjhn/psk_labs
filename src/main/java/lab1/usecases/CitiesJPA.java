@@ -33,7 +33,7 @@ public class CitiesJPA {
     private List<City> allCities;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadAllCities();
         cityToCreate.setName(nameGenerator.generateCityName());
     }
@@ -45,10 +45,10 @@ public class CitiesJPA {
     @Transactional
     public void createCity() {
         fullNameCreator.createFullCityName(cityToCreate);
-            cities.persist(cityToCreate);
+        cities.persist(cityToCreate);
     }
 
-    private void loadAllCities(){
+    private void loadAllCities() {
         allCities = cities.loadAll();
     }
 }

@@ -17,13 +17,13 @@ public class NameGenerator implements Serializable {
     public String generateCityName() {
         int random = rand.nextInt(100);
         String name;
-        if(random < 20) {
+        if (random < 20) {
             name = "Tiny town ";
-        } else if(random < 40) {
+        } else if (random < 40) {
             name = "Small town ";
-        } else if(random < 60) {
+        } else if (random < 60) {
             name = "Big town ";
-        } else if(random < 80) {
+        } else if (random < 80) {
             name = "Small city ";
         } else {
             name = "Big city ";

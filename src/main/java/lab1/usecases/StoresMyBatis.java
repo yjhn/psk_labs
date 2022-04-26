@@ -33,7 +33,7 @@ public class StoresMyBatis {
     private List<Store> allStores;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadAllStores();
     }
 
@@ -42,13 +42,13 @@ public class StoresMyBatis {
     }
 
     @Transactional
-    public void createStore(){
+    public void createStore() {
 //        System.out.println(storeNetworkMapper.selectCitiesWithStores(storeToCreate.getStoreNetworkId()).size());
 //        System.out.println(cityMapper.selectStoreNetworksInCity(storeToCreate.getCityId()).size());
         storeMapper.insert(storeToCreate);
     }
 
-    private void loadAllStores(){
+    private void loadAllStores() {
         allStores = storeMapper.selectAll();
     }
 }

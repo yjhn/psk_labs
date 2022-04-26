@@ -33,7 +33,7 @@ public class CitiesMyBatis {
     private List<City> allCities;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         loadAllCities();
         cityToCreate.setName(nameGenerator.generateCityName());
     }
@@ -45,10 +45,10 @@ public class CitiesMyBatis {
     @Transactional
     public void createCity() {
         validator.createFullCityName(cityToCreate);
-            cityMapper.insert(cityToCreate);
+        cityMapper.insert(cityToCreate);
     }
 
-    private void loadAllCities(){
+    private void loadAllCities() {
         allCities = cityMapper.selectAll();
     }
 }
