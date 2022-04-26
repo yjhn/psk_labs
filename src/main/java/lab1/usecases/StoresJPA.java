@@ -4,6 +4,8 @@ package lab1.usecases;
 import lab1.jpa.entities.City;
 import lab1.jpa.entities.Store;
 import lab1.jpa.entities.StoreNetwork;
+import lab1.jpa.persistence.CitiesDAO;
+import lab1.jpa.persistence.StoreNetworksDAO;
 import lab1.jpa.persistence.StoresDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +20,9 @@ import java.util.List;
 public class StoresJPA {
     @Inject
     private StoresDAO stores;
+
+    @Inject
+    private StoreNetworksDAO storeNetworksDAO;
 
     @Getter
     @Setter
@@ -38,7 +43,11 @@ public class StoresJPA {
     }
 
     @Transactional
-    public void createStore(){
+    public void createStore() {
+        StoreNetwork network = storeToCreate.getStoreNetwork();
+        List<City> citiesWithStores = network.getCitiesWithStores();
+        citiesWithStores.add(storeToCreate.getCity());
+        storeNetworksDAO.update(network);
         stores.persist(storeToCreate);
     }
 

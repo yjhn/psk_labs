@@ -20,6 +20,6 @@ public class Store {
     @ManyToOne
     private City city;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private StoreNetwork storeNetwork;
 }

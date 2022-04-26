@@ -1,5 +1,6 @@
 package lab1.jpa.persistence;
 
+import lab1.jpa.entities.City;
 import lab1.jpa.entities.StoreNetwork;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -18,6 +19,10 @@ public class StoreNetworksDAO {
 
     public void persist(StoreNetwork storeNetwork){
         em.persist(storeNetwork);
+    }
+
+    public void update(StoreNetwork storeNetwork) {
+        em.merge(storeNetwork);
     }
 
     public StoreNetwork findById(int id) {
