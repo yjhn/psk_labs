@@ -14,6 +14,14 @@
     </nav>
     <h:form>
         <div>
+            <h:outputLabel for="store-network">Store network name: </h:outputLabel>
+            <h:selectOneMenu id="store-network" value="#{storesJPA.storeToCreate.storeNetwork.id}" required="true">
+                <c:forEach items="#{storesJPA.allStoreNetworks}" var="network">
+                    <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
+                </c:forEach>
+            </h:selectOneMenu>
+        </div>
+        <div>
             <h:outputLabel for="city">Name of the city where the store is: </h:outputLabel>
             <h:selectOneMenu id="city" value="#{storesJPA.storeToCreate.city.id}" required="true">
                 <c:forEach items="#{citiesJPA.allCities}" var="city">
@@ -22,12 +30,8 @@
             </h:selectOneMenu>
         </div>
         <div>
-            <h:outputLabel for="store-network">Store network name: </h:outputLabel>
-            <h:selectOneMenu id="store-network" value="#{storesJPA.storeToCreate.storeNetwork.id}" required="true">
-                <c:forEach items="#{storesJPA.allStoreNetworks}" var="network">
-                    <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
-                </c:forEach>
-            </h:selectOneMenu>
+            <h:outputLabel for="address-in-city">Store address in city: </h:outputLabel>
+            <h:inputText id="address-in-city" value="#{storesJPA.storeToCreate.addressInCity}" required="true" />
         </div>
         <h:commandButton value="Add new store" actionListener="#{storesJPA.createStore}" action="stores?faces-redirect=true"/>
     </h:form>

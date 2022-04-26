@@ -18,10 +18,15 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "address_in_city", nullable = false)
+    private String addressInCity;
+
     @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     @ManyToOne
+    @JoinColumn(name = "store_network_id", nullable = false)
     private StoreNetwork storeNetwork;
 
     @Override

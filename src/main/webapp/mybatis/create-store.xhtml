@@ -14,6 +14,14 @@
    </nav>
    <h:form>
       <div>
+         <h:outputLabel for="store-network">Store network name: </h:outputLabel>
+         <h:selectOneMenu id="store-network" value="#{storesMyBatis.storeToCreate.storeNetworkId}" required="true">
+            <c:forEach items="#{storeNetworksMyBatis.allStoreNetworks}" var="network">
+               <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
+            </c:forEach>
+         </h:selectOneMenu>
+      </div>
+      <div>
          <h:outputLabel for="city">Name of the city where the store is: </h:outputLabel>
          <h:selectOneMenu id="city" value="#{storesMyBatis.storeToCreate.cityId}" required="true">
             <c:forEach items="#{citiesMyBatis.allCities}" var="city">
@@ -22,12 +30,8 @@
          </h:selectOneMenu>
       </div>
       <div>
-         <h:outputLabel for="store-network">Store network name: </h:outputLabel>
-         <h:selectOneMenu id="store-network" value="#{storesMyBatis.storeToCreate.storenetworkId}" required="true">
-            <c:forEach items="#{storeNetworksMyBatis.allStoreNetworks}" var="network">
-               <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
-            </c:forEach>
-         </h:selectOneMenu>
+         <h:outputLabel for="address-in-city">Store address in city: </h:outputLabel>
+         <h:inputText id="address-in-city" value="#{storesMyBatis.storeToCreate.addressInCity}" required="true" />
       </div>
       <h:commandButton value="Add new store" actionListener="#{storesMyBatis.createStore}" action="stores?faces-redirect=true"/>
    </h:form>

@@ -18,6 +18,7 @@ public class StoreNetwork {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "storeNetwork")

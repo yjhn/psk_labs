@@ -22,10 +22,10 @@ public class City {
 
     private String name;
 
-    @Column(name = "full_city_name")
+    @Column(name = "full_city_name", nullable = false)
     private String fullCityName;
 
-    @Column(name = "country_name")
+    @Column(name = "country_name", nullable = false)
     private String countryName;
 
     @OneToMany(mappedBy = "city")

@@ -1,7 +1,9 @@
 package lab1.usecases;
 
 
+import lab1.mybatis.dao.CityMapper;
 import lab1.mybatis.dao.StoreMapper;
+import lab1.mybatis.dao.StoreNetworkMapper;
 import lab1.mybatis.model.Store;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +18,12 @@ import java.util.List;
 public class StoresMyBatis {
     @Inject
     private StoreMapper storeMapper;
+
+    @Inject
+    private CityMapper cityMapper;
+
+    @Inject
+    private StoreNetworkMapper storeNetworkMapper;
 
     @Getter
     @Setter
@@ -35,7 +43,8 @@ public class StoresMyBatis {
 
     @Transactional
     public void createStore(){
-
+//        System.out.println(storeNetworkMapper.selectCitiesWithStores(storeToCreate.getStoreNetworkId()).size());
+//        System.out.println(cityMapper.selectStoreNetworksInCity(storeToCreate.getCityId()).size());
         storeMapper.insert(storeToCreate);
     }
 
