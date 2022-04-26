@@ -9,18 +9,18 @@
 <h:body>
     <h1>Create a new city</h1>
     <nav>
-        <h:link outcome="index">Home</h:link>
+        <h:link outcome="/index">Home</h:link>
     </nav>
     <h:form>
         <div>
         <h:outputLabel for="name">Name of the city: </h:outputLabel>
-        <h:inputText id="name" value="#{cities.cityToCreate.name}" required="true" />
+        <h:inputText id="name" value="#{citiesJPA.cityToCreate.name}" required="true" />
         </div>
         <div>
             <h:outputLabel for="country">Name of the country the city is in: </h:outputLabel>
-            <h:inputText id="country" value="#{cities.cityToCreate.countryName}" required="true" />
+            <h:inputText id="country" value="#{citiesJPA.cityToCreate.countryName}" required="true" />
         </div>
-        <h:commandButton value="Add new city" actionListener="#{cities.createCity}" action="cities?faces-redirect=true"/>
+        <h:commandButton value="Add new city" actionListener="#{citiesJPA.createCity}" action="cities?faces-redirect=true"/>
     </h:form>
 </h:body>
 

@@ -1,9 +1,9 @@
 package lab1.usecases;
 
 
-import lab1.jpa.entities.City;
-import lab1.jpa.persistence.CitiesDAO;
-import lab1.services.CityValidator;
+import lab1.mybatis.dao.CityMapper;
+import lab1.mybatis.model.City;
+import lab1.services.CityFullNameCreator;
 import lab1.services.NameGenerator;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,15 +15,15 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
-public class Cities {
+public class CitiesMyBatis {
     @Inject
-    private CitiesDAO cities;
+    private CityMapper cityMapper;
 
     @Inject
     private NameGenerator nameGenerator;
 
     @Inject
-    private CityValidator validator;
+    private CityFullNameCreator validator;
 
     @Getter
     @Setter
@@ -39,16 +39,16 @@ public class Cities {
     }
 
     public City findById(int id) {
-        return cities.findById(id);
+        return cityMapper.selectByPrimaryKey(id);
     }
 
     @Transactional
     public void createCity() {
         validator.assignFullCityName(cityToCreate);
-            cities.persist(cityToCreate);
+            cityMapper.insert(cityToCreate);
     }
 
     private void loadAllCities(){
-        allCities = cities.loadAll();
+        allCities = cityMapper.selectAll();
     }
 }

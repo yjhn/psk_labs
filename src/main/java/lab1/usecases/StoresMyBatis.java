@@ -1,8 +1,8 @@
 package lab1.usecases;
 
 
-import lab1.jpa.entities.Store;
-import lab1.jpa.persistence.StoresDAO;
+import lab1.mybatis.dao.StoreMapper;
+import lab1.mybatis.model.Store;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +13,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
-public class Stores {
+public class StoresMyBatis {
     @Inject
-    private StoresDAO stores;
+    private StoreMapper storeMapper;
 
     @Getter
     @Setter
@@ -30,15 +30,15 @@ public class Stores {
     }
 
     public Store findById(int id) {
-        return stores.findById(id);
+        return storeMapper.selectByPrimaryKey(id);
     }
 
     @Transactional
     public void createStore(){
-        stores.persist(storeToCreate);
+        storeMapper.insert(storeToCreate);
     }
 
     private void loadAllStores(){
-        allStores = stores.loadAll();
+        allStores = storeMapper.selectAll();
     }
 }

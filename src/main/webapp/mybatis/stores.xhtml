@@ -16,9 +16,9 @@
 <h:body>
     <h1>List of stores</h1>
     <nav>
-        <h:link outcome="index">Home</h:link>
+        <h:link outcome="/index">Home</h:link>
     </nav>
-    <h:dataTable value="#{stores.allStores}" var="store">
+    <h:dataTable value="#{storesMyBatis.allStores}" var="store">
         <h:column>
             <c:facet name="header">Id</c:facet>
             #{store.id}
