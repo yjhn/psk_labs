@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.OptimisticLockException;
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -20,6 +21,7 @@ public class CitiesDAO {
         return em.createNamedQuery("City.findAll", City.class).getResultList();
     }
 
+    @Transactional
     public void persist(City city) {
         em.persist(city);
         em.flush();
