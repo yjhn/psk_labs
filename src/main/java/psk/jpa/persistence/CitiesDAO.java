@@ -5,7 +5,11 @@ import psk.jpa.entities.City;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.OptimisticLockException;
 import java.util.List;
+
+import static java.lang.System.out;
+
 
 @ApplicationScoped
 public class CitiesDAO {
@@ -18,6 +22,7 @@ public class CitiesDAO {
 
     public void persist(City city) {
         em.persist(city);
+        em.flush();
     }
 
     public City findById(int id) {

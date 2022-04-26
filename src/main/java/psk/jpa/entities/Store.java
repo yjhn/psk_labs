@@ -29,6 +29,9 @@ public class Store {
     @JoinColumn(name = "store_network_id", nullable = false)
     private StoreNetwork storeNetwork;
 
+    @Version
+    private int optLockVersion;
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {

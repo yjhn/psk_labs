@@ -11,8 +11,12 @@ import lombok.Setter;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.util.List;
+
+import static java.lang.System.out;
+import static java.lang.Thread.sleep;
 
 @Model
 public class CitiesJPA {
@@ -37,6 +41,21 @@ public class CitiesJPA {
         cityToEdit.setFullCityName(city.getFullCityName());
         cityToEdit.setName(city.getName());
         cityToEdit.setCountryName(city.getCountryName());
+    }
+
+    public void saveCityChanges() throws InterruptedException {
+        try {
+            saveCityChangesInternal();
+        } catch (OptimisticLockException e) {
+            out.println("Caught optimistic lock exception:\n" + e);
+            saveCityChangesInternal();
+        }
+        out.println("saveCityChanges() called, sleeping for 5 seconds");
+        sleep(5000);
+    }
+
+    @Transactional
+    public void saveCityChangesInternal() {
         cities.persist(cityToEdit);
     }
 
@@ -61,7 +80,7 @@ public class CitiesJPA {
 
     private void loadAllCities() {
         allCities = cities.loadAll();
-        if(allCities.size() >= 1) {
+        if (allCities.size() >= 1) {
             cityToEdit = allCities.get(0);
         }
     }

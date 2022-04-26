@@ -34,6 +34,9 @@ public class City {
     @ManyToMany(mappedBy = "citiesWithStores")
     private Set<StoreNetwork> storeNetworks;
 
+    @Version
+    private int optLockVersion;
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {

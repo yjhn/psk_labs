@@ -30,6 +30,9 @@ public class StoreNetwork {
     @ManyToMany
     private Set<City> citiesWithStores = new HashSet<>();
 
+    @Version
+    private int optLockVersion;
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {
