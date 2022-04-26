@@ -42,22 +42,29 @@ public class CitiesJPA {
         out.println("sleeping for 5 seconds");
         Thread.sleep(5000);
         try {
-            saveCityChangesInternal();
+            saveCityChangesInternal(cityToEdit);
         } catch (OptimisticLockException e) {
             out.println("Caught optimistic lock exception:\n" + e);
-            City c = cities.findById(cityToEdit.getId());
-            c.setFullCityName(cityToEdit.getFullCityName());
-            c.setName(cityToEdit.getName());
-            c.setCountryName(cityToEdit.getCountryName());
-            cityToEdit = c;
-            out.println("Overwriting previous changes");
-            saveCityChangesInternal();
+            out.println("Retrying up to 3 times");
+            for(int i = 0; i < 3; ++i) {
+                City c = cities.findById(cityToEdit.getId());
+                c.setFullCityName(cityToEdit.getFullCityName());
+                c.setName(cityToEdit.getName());
+                c.setCountryName(cityToEdit.getCountryName());
+                out.println("Overwriting previous changes");
+                try {
+                    saveCityChangesInternal(c);
+                    break;
+                } catch (OptimisticLockException exc) {
+                    out.println("Caught optimistic lock exception:\n" + exc);
+                }
+            }
         }
     }
 
     @Transactional
-    public void saveCityChangesInternal() {
-        cities.persist(cityToEdit);
+    public void saveCityChangesInternal(City c) {
+        cities.persist(c);
     }
 
     @Getter
