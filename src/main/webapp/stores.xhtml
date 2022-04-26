@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>List of stores</title>
+
+    <h:outputStylesheet>
+        table, th, td {
+            border: solid 1px black;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <h1>List of stores</h1>
+    <nav>
+        <h:link outcome="index">Home</h:link>
+    </nav>
+    <h:dataTable value="#{stores.allStores}" var="store">
+        <h:column>
+            <c:facet name="header">Id</c:facet>
+            #{store.id}
+        </h:column>
+        <h:column>
+            <c:facet name="header">City id</c:facet>
+            #{store.city.id}
+        </h:column>
+        <h:column>
+            <c:facet name="header">City name</c:facet>
+            #{store.city.name}
+        </h:column>
+        <h:column>
+            <c:facet name="header">Country name</c:facet>
+            #{store.city.countryName}
+        </h:column>
+        <h:column>
+            <c:facet name="header">Store network id</c:facet>
+            #{store.storeNetwork.id}
+        </h:column>
+        <h:column>
+            <c:facet name="header">Store network name</c:facet>
+            #{store.storeNetwork.name}
+        </h:column>
+    </h:dataTable>
+</h:body>
+
+</html>

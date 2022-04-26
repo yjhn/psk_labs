@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>List of cities</title>
+
+    <h:outputStylesheet>
+        table, th, td {
+            border: solid 1px black;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <h1>List of cities</h1>
+    <nav>
+        <h:link outcome="index">Home</h:link>
+    </nav>
+    <h:dataTable value="#{cities.allCities}" var="city">
+        <h:column>
+            <c:facet name="header">Id</c:facet>
+            #{city.id}
+        </h:column>
+        <h:column>
+            <c:facet name="header">Name</c:facet>
+            #{city.name}
+        </h:column>
+        <h:column>
+            <c:facet name="header">Country name</c:facet>
+            #{city.countryName}
+        </h:column>
+    </h:dataTable>
+</h:body>
+
+</html>

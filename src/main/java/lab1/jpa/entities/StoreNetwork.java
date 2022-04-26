@@ -12,8 +12,15 @@ import java.util.List;
 })
 @Getter
 @Setter
-@Table(name = "STORE_NETWORK")
+@Table(name = "store_network")
 public class StoreNetwork {
+    public StoreNetwork() {}
+
+    public StoreNetwork(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

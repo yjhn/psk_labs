@@ -3,8 +3,7 @@ package lab1.usecases;
 
 import lab1.jpa.entities.City;
 import lab1.jpa.entities.Store;
-import lab1.jpa.entities.StoreNetwork;
-import lab1.jpa.persistence.StoresDAO;
+import lab1.jpa.persistence.CitiesDAO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,32 +14,32 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Model
-public class Stores {
+public class Cities {
     @Inject
-    private StoresDAO stores;
+    private CitiesDAO cities;
 
     @Getter
     @Setter
-    private Store storeToCreate = new Store();
+    private City cityToCreate = new City();
 
     @Getter
-    private List<Store> allStores;
+    private List<City> allCities;
 
     @PostConstruct
     public void init(){
-        loadAllStores();
+        loadAllCities();
     }
 
-    public Store findById(int id) {
-        return stores.findById(id);
+    public City findById(int id) {
+        return cities.findById(id);
     }
 
     @Transactional
-    public void createStore(){
-        stores.persist(storeToCreate);
+    public void createCity(){
+        cities.persist(cityToCreate);
     }
 
-    private void loadAllStores(){
-        allStores = stores.loadAll();
+    private void loadAllCities(){
+        allCities = cities.loadAll();
     }
 }
