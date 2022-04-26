@@ -1,3 +1,3 @@
-# Programų sistemų kūrimo I laboratorinis darbas
+# Programų sistemų kūrimo laboratoriniai darbai
 
 Tema - miestai, parduotuvės, parduotuvių tinklai.
