@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Store.findAll", query = "select s from Store s")
+})
 @Getter
 @Setter
 @Table

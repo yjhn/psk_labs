@@ -7,6 +7,9 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "StoreNetwork.findAll", query = "select n from StoreNetwork n")
+})
 @Getter
 @Setter
 @Table(name = "STORE_NETWORK")
