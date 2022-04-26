@@ -10,12 +10,14 @@
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="CITY_ID" jdbcType="INTEGER" property="cityId" />
     <result column="STORENETWORK_ID" jdbcType="INTEGER" property="storenetworkId" />
+      <association property="city" column="CITY_ID" resultMap="lab1.mybatis.dao.CityMapper.BaseResultMap"/>
       <association property="city" column="CITY_ID" javaType="City">
           <id property="id" column="c_id"/>
           <result property="name" column="c_name"/>
           <result property="countryName1" column="c_cname"/>
           <result property="fullCityName" column="c_fname"/>
       </association>
+    <association property="storeNetwork" column="STORENETWORK_ID" resultMap="lab1.mybatis.dao.StoreNetworkMapper.BaseResultMap"/>
       <association property="storeNetwork" column="STORENETWORK_ID" javaType="StoreNetwork">
           <id property="id" column="n_id"/>
           <result property="name" column="n_name"/>
