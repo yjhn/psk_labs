@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 import static java.lang.System.out;
-import static java.lang.Thread.sleep;
+import java.lang.Thread;
 
 @Model
 public class CitiesJPA {
@@ -34,24 +34,25 @@ public class CitiesJPA {
     private City cityToCreate = new City();
 
     @Getter
+    @Setter
     private City cityToEdit;
 
-    public void setCityToEdit(City city) {
-        fullNameCreator.createFullCityName(city);
-        cityToEdit.setFullCityName(city.getFullCityName());
-        cityToEdit.setName(city.getName());
-        cityToEdit.setCountryName(city.getCountryName());
-    }
-
     public void saveCityChanges() throws InterruptedException {
+        fullNameCreator.createFullCityName(cityToEdit);
+        out.println("sleeping for 5 seconds");
+        Thread.sleep(5000);
         try {
             saveCityChangesInternal();
         } catch (OptimisticLockException e) {
             out.println("Caught optimistic lock exception:\n" + e);
+            City c = cities.findById(cityToEdit.getId());
+            c.setFullCityName(cityToEdit.getFullCityName());
+            c.setName(cityToEdit.getName());
+            c.setCountryName(cityToEdit.getCountryName());
+            cityToEdit = c;
+            out.println("Overwriting previous changes");
             saveCityChangesInternal();
         }
-        out.println("saveCityChanges() called, sleeping for 5 seconds");
-        sleep(5000);
     }
 
     @Transactional
