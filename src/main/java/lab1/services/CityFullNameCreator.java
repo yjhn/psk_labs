@@ -1,12 +1,14 @@
 package lab1.services;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 
 /**
  * Component used to create cities' full names.
  */
 @ApplicationScoped
-public class CityFullNameCreator {
+public class CityFullNameCreator implements Serializable {
     /**
      * Assigns full city name based on city's name and country's name (JPA version).
      * @param city city to which full names should be assigned

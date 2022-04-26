@@ -24,7 +24,7 @@
         <div>
             <h:outputLabel for="store-network">Store network name: </h:outputLabel>
             <h:selectOneMenu id="store-network" value="#{storesJPA.storeToCreate.storeNetwork.id}" required="true">
-                <c:forEach items="#{storeNetworksJPA.allStoreNetworks}" var="network">
+                <c:forEach items="#{storesJPA.allStoreNetworks}" var="network">
                     <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
                 </c:forEach>
             </h:selectOneMenu>

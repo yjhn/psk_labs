@@ -1,9 +1,11 @@
 package lab1.mybatis.dao;
 
+import lab1.mybatis.model.City;
 import lab1.mybatis.model.StoreNetwork;
 import org.mybatis.cdi.Mapper;
 
 import java.util.List;
+import java.util.Set;
 
 @Mapper
 public interface StoreNetworkMapper {
@@ -46,4 +48,6 @@ public interface StoreNetworkMapper {
      * @mbg.generated Fri Mar 04 14:14:56 EET 2022
      */
     int updateByPrimaryKey(StoreNetwork record);
+
+    Set<City> selectCitiesWithStores(int storeNetworkId);
 }

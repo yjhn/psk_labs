@@ -11,7 +11,18 @@
     <result column="CITY_COUNTRY_NAME" jdbcType="VARCHAR" property="countryName1" />
     <result column="CITY_FULL_CITY_NAME" jdbcType="VARCHAR" property="fullCityName" />
     <result column="CITY_NAME" jdbcType="VARCHAR" property="name" />
+
+    <collection property="storeNetworks" javaType="java.util.HashSet"
+                ofType="StoreNetwork" column="CITY_ID"
+                select="selectStoreNetworksInCity"/>
   </resultMap>
+  <select id="selectStoreNetworksInCity" resultType="StoreNetwork">
+    <!-- Get store networks in city -->
+    SELECT n.id, n.name
+    FROM public.STORE_NETWORK n
+           JOIN public.STORE_NETWORK_CITY nc on n.ID = nc.STORENETWORKS_ID
+    WHERE nc.CITIESWITHSTORES_ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

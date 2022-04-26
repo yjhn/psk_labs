@@ -31,6 +31,9 @@ public class StoresJPA {
     @Getter
     private List<Store> allStores;
 
+    @Getter
+    private List<StoreNetwork> allStoreNetworks;
+
     @PostConstruct
     public void init(){
         loadAllStores();
@@ -44,14 +47,15 @@ public class StoresJPA {
 
     @Transactional
     public void createStore() {
-        StoreNetwork network = storeToCreate.getStoreNetwork();
-        List<City> citiesWithStores = network.getCitiesWithStores();
-        citiesWithStores.add(storeToCreate.getCity());
-        storeNetworksDAO.update(network);
+        int id = storeToCreate.getStoreNetwork().getId();
+        StoreNetwork network = storeNetworksDAO.findById(id);
+        network.getCitiesWithStores().add(storeToCreate.getCity());
         stores.persist(storeToCreate);
+        storeNetworksDAO.update(network);
     }
 
     private void loadAllStores(){
         allStores = stores.loadAll();
+        allStoreNetworks = storeNetworksDAO.loadAll();
     }
 }

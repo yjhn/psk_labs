@@ -9,7 +9,17 @@
     -->
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <collection property="citiesWithStores" javaType="java.util.HashSet"
+                ofType="City" column="ID"
+                select="selectCitiesWithStores"/>
   </resultMap>
+  <select id="selectCitiesWithStores" resultType="City">
+    <!-- Get cities with stores belonging to this store network -->
+    SELECT c.id, c.name, c.country_name, c.full_city_name
+    FROM public.CITY c
+    JOIN public.STORE_NETWORK_CITY nc on c.ID = nc.CITIESWITHSTORES_ID
+    WHERE nc.STORENETWORKS_ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

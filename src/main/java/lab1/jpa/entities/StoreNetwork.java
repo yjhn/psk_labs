@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @NamedQueries({
@@ -25,5 +24,21 @@ public class StoreNetwork {
     private List<Store> stores;
 
     @ManyToMany
-    private List<City> citiesWithStores = new ArrayList<>();
+    private Set<City> citiesWithStores = new HashSet<>();
+
+    @Override
+    public boolean equals(Object other) {
+        if(other == null) {
+            return false;
+        }
+        if(!(other instanceof StoreNetwork o)) {
+            return false;
+        }
+        return o.id == this.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
 }

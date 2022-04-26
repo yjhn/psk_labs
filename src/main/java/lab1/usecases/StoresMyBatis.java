@@ -35,6 +35,7 @@ public class StoresMyBatis {
 
     @Transactional
     public void createStore(){
+
         storeMapper.insert(storeToCreate);
     }
 

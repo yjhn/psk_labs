@@ -4,6 +4,7 @@ import lab1.mybatis.model.City;
 import org.mybatis.cdi.Mapper;
 
 import java.util.List;
+import java.util.Set;
 
 @Mapper
 public interface CityMapper {
@@ -46,4 +47,6 @@ public interface CityMapper {
      * @mbg.generated Fri Mar 04 14:14:56 EET 2022
      */
     int updateByPrimaryKey(City record);
+
+    Set<City> selectStoreNetworksInCity(int cityId);
 }

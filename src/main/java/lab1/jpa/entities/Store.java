@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @NamedQueries({
@@ -20,6 +21,22 @@ public class Store {
     @ManyToOne
     private City city;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private StoreNetwork storeNetwork;
+
+    @Override
+    public boolean equals(Object other) {
+        if(other == null) {
+            return false;
+        }
+        if(!(other instanceof Store o)) {
+            return false;
+        }
+        return o.id == this.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
 }
