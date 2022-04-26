@@ -1,7 +1,6 @@
 package lab1.jpa.persistence;
 
 import lab1.jpa.entities.City;
-import lab1.jpa.entities.Store;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

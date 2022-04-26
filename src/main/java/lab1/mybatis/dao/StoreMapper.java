@@ -1,8 +1,9 @@
 package lab1.mybatis.dao;
 
-import java.util.List;
 import lab1.mybatis.model.Store;
 import org.mybatis.cdi.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface StoreMapper {
