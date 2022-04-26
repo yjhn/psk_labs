@@ -8,26 +8,26 @@ import java.util.Random;
 public class NameGenerator implements Serializable {
     private final Random rand = new Random();
 
-    public String storeNetworkNameGenerator() {
+    public String generateStoreNetworkName() {
         int random = rand.nextInt(100);
-        String name = random > 50 ? "Big store network " : "Small store network ";
+        String name = random >= 50 ? "Big store network " : "Small store network ";
         return name + rand.nextInt();
     }
 
-    public String cityNameGenerator() {
+    public String generateCityName() {
         int random = rand.nextInt(100);
         String name;
-        if(random < 21) {
+        if(random < 20) {
             name = "Tiny town ";
-        } else if(random < 41) {
+        } else if(random < 40) {
             name = "Small town ";
-        } else if(random < 61) {
+        } else if(random < 60) {
             name = "Big town ";
-        } else if(random < 81) {
+        } else if(random < 80) {
             name = "Small city ";
         } else {
             name = "Big city ";
         }
-        return name + rand.nextInt();
+        return name + rand.nextInt(100000000);
     }
 }

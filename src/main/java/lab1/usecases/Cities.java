@@ -3,6 +3,8 @@ package lab1.usecases;
 
 import lab1.jpa.entities.City;
 import lab1.jpa.persistence.CitiesDAO;
+import lab1.services.CityValidator;
+import lab1.services.NameGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +19,12 @@ public class Cities {
     @Inject
     private CitiesDAO cities;
 
+    @Inject
+    private NameGenerator nameGenerator;
+
+    @Inject
+    private CityValidator validator;
+
     @Getter
     @Setter
     private City cityToCreate = new City();
@@ -27,6 +35,7 @@ public class Cities {
     @PostConstruct
     public void init(){
         loadAllCities();
+        cityToCreate.setName(nameGenerator.generateCityName());
     }
 
     public City findById(int id) {
@@ -34,8 +43,10 @@ public class Cities {
     }
 
     @Transactional
-    public void createCity(){
-        cities.persist(cityToCreate);
+    public void createCity() {
+        if(validator.isValidCity(cityToCreate)) {
+            cities.persist(cityToCreate);
+        }
     }
 
     private void loadAllCities(){
