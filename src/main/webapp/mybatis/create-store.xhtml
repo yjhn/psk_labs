@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+   <title>Create a new store</title>
+</h:head>
+
+<h:body>
+   <h1>Create a new store</h1>
+   <nav>
+      <h:link outcome="/index">Home</h:link>
+   </nav>
+   <h:form>
+      <div>
+         <h:outputLabel for="city">Name of the city where the store is: </h:outputLabel>
+         <h:selectOneMenu id="city" value="#{storesMyBatis.storeToCreate.cityId}" required="true">
+            <c:forEach items="#{citiesMyBatis.allCities}" var="city">
+               <f:selectItem itemValue = "#{city.id}" itemLabel = "#{city.name}" />
+            </c:forEach>
+         </h:selectOneMenu>
+      </div>
+      <div>
+         <h:outputLabel for="store-network">Store network name: </h:outputLabel>
+         <h:selectOneMenu id="store-network" value="#{storesMyBatis.storeToCreate.storenetworkId}" required="true">
+            <c:forEach items="#{storeNetworksMyBatis.allStoreNetworks}" var="network">
+               <f:selectItem itemValue="#{network.id}" itemLabel="#{network.name}" />
+            </c:forEach>
+         </h:selectOneMenu>
+      </div>
+      <h:commandButton value="Add new store" actionListener="#{storesMyBatis.createStore}" action="stores?faces-redirect=true"/>
+   </h:form>
+</h:body>
+
+</html>

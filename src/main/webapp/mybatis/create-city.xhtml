@@ -18,7 +18,7 @@
         </div>
         <div>
             <h:outputLabel for="country">Name of the country the city is in: </h:outputLabel>
-            <h:inputText id="country" value="#{citiesMyBatis.cityToCreate.countryName}" required="true" />
+            <h:inputText id="country" value="#{citiesMyBatis.cityToCreate.countryName1}" required="true" />
         </div>
         <h:commandButton value="Add new city" actionListener="#{citiesMyBatis.createCity}" action="cities?faces-redirect=true"/>
     </h:form>

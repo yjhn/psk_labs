@@ -11,7 +11,7 @@ public class NameGenerator implements Serializable {
     public String generateStoreNetworkName() {
         int random = rand.nextInt(100);
         String name = random >= 50 ? "Big store network " : "Small store network ";
-        return name + rand.nextInt();
+        return name + rand.nextInt(1000);
     }
 
     public String generateCityName() {

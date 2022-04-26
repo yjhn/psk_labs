@@ -1,7 +1,9 @@
 package lab1.usecases;
 
 
+import lab1.jpa.entities.City;
 import lab1.jpa.entities.Store;
+import lab1.jpa.entities.StoreNetwork;
 import lab1.jpa.persistence.StoresDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,8 @@ public class StoresJPA {
     @PostConstruct
     public void init(){
         loadAllStores();
+        storeToCreate.setStoreNetwork(new StoreNetwork());
+        storeToCreate.setCity(new City());
     }
 
     public Store findById(int id) {

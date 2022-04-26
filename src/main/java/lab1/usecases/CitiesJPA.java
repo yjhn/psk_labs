@@ -23,7 +23,7 @@ public class CitiesJPA {
     private NameGenerator nameGenerator;
 
     @Inject
-    private CityFullNameCreator validator;
+    private CityFullNameCreator fullNameCreator;
 
     @Getter
     @Setter
@@ -44,7 +44,7 @@ public class CitiesJPA {
 
     @Transactional
     public void createCity() {
-        validator.assignFullCityName(cityToCreate);
+        fullNameCreator.createFullCityName(cityToCreate);
             cities.persist(cityToCreate);
     }
 

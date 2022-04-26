@@ -44,7 +44,7 @@ public class CitiesMyBatis {
 
     @Transactional
     public void createCity() {
-        validator.assignFullCityName(cityToCreate);
+        validator.createFullCityName(cityToCreate);
             cityMapper.insert(cityToCreate);
     }
 
