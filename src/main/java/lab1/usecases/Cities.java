@@ -44,9 +44,8 @@ public class Cities {
 
     @Transactional
     public void createCity() {
-        if(validator.isValidCity(cityToCreate)) {
+        validator.assignFullCityName(cityToCreate);
             cities.persist(cityToCreate);
-        }
     }
 
     private void loadAllCities(){

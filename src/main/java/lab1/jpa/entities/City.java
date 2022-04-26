@@ -20,6 +20,9 @@ public class City {
 
     private String name;
 
+    @Column(name = "full_city_name")
+    private String fullCityName;
+
     @Column(name = "country_name")
     private String countryName;
 
