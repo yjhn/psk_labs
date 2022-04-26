@@ -14,13 +14,6 @@ import java.util.List;
 @Setter
 @Table(name = "store_network")
 public class StoreNetwork {
-    public StoreNetwork() {}
-
-    public StoreNetwork(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

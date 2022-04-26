@@ -15,27 +15,9 @@ public class StoresDAO {
 
     @Transactional
     public List<Store> loadAll() {
-//        City c = new City();
-//        c.setName("City 1");
-//        c.setCountryName("Country 1");
-//        StoreNetwork n1 = new StoreNetwork();
-//        n1.setName("Store network 1");
-//        Store s1 = new Store();
-//        Store s2 = new Store();
-//        s1.setCity(c); // TODO: too much shit, don't have to do this, can just create StoreNetwork or City
-//        s2.setCity(c);
-//        s1.setStoreNetwork(n1);
-//        s2.setStoreNetwork(n1);
-//        em.persist(c);
-//        em.persist(n1);
-//        em.persist(s1);
-//        em.persist(s2);
-//        em.flush();
-        List<Store> stores = em.createNamedQuery("Store.findAll", Store.class).getResultList();
-        return stores;
+        return em.createNamedQuery("Store.findAll", Store.class).getResultList();
     }
 
-//    @Transactional
     public void persist(Store store){
         em.persist(store);
     }
