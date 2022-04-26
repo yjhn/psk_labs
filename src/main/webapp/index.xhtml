@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>List of stores</title>
+</h:head>
+
+<h:body>
+    <h1>List of stores</h1>
+    <br/>
+    <h:dataTable value="#{stores.allStores}" var="store">
+        <h:column>
+            <th>Id</th>
+            #{store.id}
+        </h:column>
+        <h:column>
+            <th>City id</th>
+            #{store.city.id}
+        </h:column>
+        <h:column>
+            <th>City name</th>
+            #{store.city.name}
+        </h:column>
+        <h:column>
+            <th>Country name</th>
+            #{store.city.countryName}
+        </h:column>
+        <h:column>
+            <th>Store network id</th>
+            #{store.storeNetwork.id}
+        </h:column>
+        <h:column>
+            <th>Store network name</th>
+            #{store.storeNetwork.name}
+        </h:column>
+    </h:dataTable>
+</h:body>
+
+</html>
