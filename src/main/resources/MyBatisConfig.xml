@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lab1.mybatis.model.Store" alias="Store"/>
-        <typeAlias type="lab1.mybatis.model.StoreNetwork" alias="StoreNetwork"/>
-        <typeAlias type="lab1.mybatis.model.City" alias="City"/>
+        <typeAlias type="psk.mybatis.model.Store" alias="Store"/>
+        <typeAlias type="psk.mybatis.model.StoreNetwork" alias="StoreNetwork"/>
+        <typeAlias type="psk.mybatis.model.City" alias="City"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="MANAGED"/>
             <dataSource type="JNDI">
-                <property name="data_source" value="psk_lab1_datasource"/>
+                <property name="data_source" value="psk_labs_datasource"/>
             </dataSource>
         </environment>
     </environments>

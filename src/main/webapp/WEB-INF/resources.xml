@@ -4,9 +4,9 @@
     <!-- see http://tomee.apache.org/datasource-config.html -->
 
     <!-- H2 Database -->
-    <Resource id="psk_lab1_datasource" type="DataSource">
+    <Resource id="psk_labs_datasource" type="DataSource">
         JdbcDriver = org.h2.Driver
-        JdbcUrl = jdbc:h2:~/h2database/psk_lab1_db;AUTO_SERVER=TRUE;
+        JdbcUrl = jdbc:h2:~/h2database/psk_labs_db;AUTO_SERVER=TRUE;
         UserName = as
         Password = as
         InitialSize = 1
