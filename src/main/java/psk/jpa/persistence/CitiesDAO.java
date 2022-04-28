@@ -5,15 +5,12 @@ import psk.jpa.entities.City;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.util.List;
 
-import static java.lang.System.out;
-
 
 @ApplicationScoped
-public class CitiesDAO {
+public class CitiesDAO implements DAO<City> {
     @Inject
     private EntityManager em;
 
@@ -22,8 +19,8 @@ public class CitiesDAO {
     }
 
     @Transactional
-    public void persist(City city) {
-        em.persist(city);
+    public void persist(City c) {
+        em.persist(c);
         em.flush();
     }
 

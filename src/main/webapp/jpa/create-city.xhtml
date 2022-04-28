@@ -23,6 +23,13 @@
         <h:commandButton value="Add new city" actionListener="#{citiesJPA.createCity}"
                          action="cities?faces-redirect=true"/>
     </h:form>
+    <h:form>
+        <h:commandButton value="Suggest country name"
+                         disabled="#{countryNameGenerator.isNameGenerationRunning()}"
+                         actionListener="#{countryNameGenerator.generateNewCountryName}"/>
+        <h:commandButton value="Refresh" />
+        <h:outputText value="#{countryNameGenerator.countryNameGenerationStatus}" />
+    </h:form>
 </h:body>
 
 </html>

@@ -31,6 +31,7 @@ public class StoreNetwork {
     private Set<City> citiesWithStores = new HashSet<>();
 
     @Version
+    @Column(name = "opt_lock_version")
     private int optLockVersion;
 
     @Override

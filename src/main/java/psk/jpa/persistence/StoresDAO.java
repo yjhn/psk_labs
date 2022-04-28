@@ -9,15 +9,15 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
-public class StoresDAO {
+public class StoresDAO implements DAO<Store> {
     @Inject
     private EntityManager em;
 
-    @Transactional
     public List<Store> loadAll() {
         return em.createNamedQuery("Store.findAll", Store.class).getResultList();
     }
 
+    @Transactional
     public void persist(Store store) {
         em.persist(store);
     }

@@ -35,6 +35,7 @@ public class City {
     private Set<StoreNetwork> storeNetworks;
 
     @Version
+    @Column(name = "opt_lock_version")
     private int optLockVersion;
 
     @Override

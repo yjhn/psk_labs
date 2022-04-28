@@ -30,6 +30,7 @@ public class Store {
     private StoreNetwork storeNetwork;
 
     @Version
+    @Column(name = "opt_lock_version")
     private int optLockVersion;
 
     @Override

@@ -4,12 +4,17 @@ package psk.usecases;
 import psk.jpa.entities.City;
 import psk.jpa.persistence.CitiesDAO;
 import psk.services.CityFullNameCreator;
+import psk.services.CountryNameGenerator;
 import psk.services.NameGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
@@ -17,14 +22,19 @@ import java.util.List;
 
 import static java.lang.System.out;
 import java.lang.Thread;
+import java.util.concurrent.ExecutionException;
 
 @Model
+@LogMethodInvocations
 public class CitiesJPA {
     @Inject
     private CitiesDAO cities;
 
     @Inject
     private NameGenerator nameGenerator;
+
+    @Inject
+    private CountryNameGenerator countryNameGenerator;
 
     @Inject
     private CityFullNameCreator fullNameCreator;
@@ -92,4 +102,13 @@ public class CitiesJPA {
             cityToEdit = allCities.get(0);
         }
     }
+
+//    public void suggestCountryName() throws ExecutionException, InterruptedException {
+//        out.println("aaaaaaa");
+//        if(countryNameGenerator.getCountryNameGenerationStatus() == CountryNameGenerator.TaskStatus.Done) {
+//            cityToCreate.setCountryName(countryNameGenerator.getResult());
+//        } else {
+//            cityToCreate.setCountryName("aaaa");
+//        }
+//    }
 }

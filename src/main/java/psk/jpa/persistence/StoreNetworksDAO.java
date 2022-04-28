@@ -1,5 +1,6 @@
 package psk.jpa.persistence;
 
+import psk.jpa.entities.City;
 import psk.jpa.entities.StoreNetwork;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
-public class StoreNetworksDAO {
+public class StoreNetworksDAO implements DAO<StoreNetwork> {
     @Inject
     private EntityManager em;
 
