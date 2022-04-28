@@ -34,22 +34,13 @@ public class CountryNameGenerator implements Serializable {
     public String getCountryNameGenerationStatus() throws ExecutionException, InterruptedException {
         if (generationTask == null) {
             return null;
-//            return TaskStatus.NotYetStarted;
         } else if (isNameGenerationRunning()) {
             return "country name is being generated...";
-//            return TaskStatus.InProgress;
         }
-        return generationTask.get();
-//        return TaskStatus.Done;
+        return "Country name suggestion: " + generationTask.get();
     }
 
     public String getResult() throws ExecutionException, InterruptedException {
         return generationTask.get();
     }
-
-//    public enum TaskStatus {
-//        NotYetStarted,
-//        InProgress,
-//        Done
-//    }
 }

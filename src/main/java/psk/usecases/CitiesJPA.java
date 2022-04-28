@@ -34,9 +34,6 @@ public class CitiesJPA {
     private NameGenerator nameGenerator;
 
     @Inject
-    private CountryNameGenerator countryNameGenerator;
-
-    @Inject
     private CityFullNameCreator fullNameCreator;
 
     @Getter
@@ -102,13 +99,4 @@ public class CitiesJPA {
             cityToEdit = allCities.get(0);
         }
     }
-
-//    public void suggestCountryName() throws ExecutionException, InterruptedException {
-//        out.println("aaaaaaa");
-//        if(countryNameGenerator.getCountryNameGenerationStatus() == CountryNameGenerator.TaskStatus.Done) {
-//            cityToCreate.setCountryName(countryNameGenerator.getResult());
-//        } else {
-//            cityToCreate.setCountryName("aaaa");
-//        }
-//    }
 }
