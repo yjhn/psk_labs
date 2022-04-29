@@ -64,7 +64,6 @@ public class StoresController {
         return Response.ok(storeDto).build();
     }
 
-    @Path("/{id}")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
@@ -84,8 +83,9 @@ public class StoresController {
         store.setAddressInCity(storeDto.getAddressInCity());
         store.setCity(c);
         store.setStoreNetwork(n);
+        storesDAO.persist(store);
 
-        return Response.created(uriInfo.getRequestUri()).build();
+        return Response.created(uriInfo.getRequestUri().resolve(String.valueOf(store.getId()))).build();
     }
 
     @Path("/{id}")
@@ -94,11 +94,16 @@ public class StoresController {
     @Transactional
     public Response update(
             @PathParam("id") final int storeId,
-            @NotNull StoreDTO storeDto) throws InterruptedException {
+            @NotNull StoreDTO storeDto) {
         try {
             Store existingStore = storesDAO.findById(storeId);
             if (existingStore == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
+            }
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
             City c = citiesDAO.findById(storeDto.getCityId());
@@ -111,12 +116,12 @@ public class StoresController {
                 return Response.status(Response.Status.BAD_REQUEST)
                         .entity("Store must have a valid storeNetworkId").build();
             }
+            n.getCitiesWithStores().add(c);
             existingStore.setAddressInCity(storeDto.getAddressInCity());
             existingStore.setCity(c);
             existingStore.setStoreNetwork(n);
 
-            Thread.sleep(5000);
-            storesDAO.persist(existingStore);
+            storesDAO.update(existingStore);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {
             return Response.status(Response.Status.CONFLICT).build();

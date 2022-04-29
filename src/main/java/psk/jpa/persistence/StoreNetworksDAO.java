@@ -21,8 +21,8 @@ public class StoreNetworksDAO implements DAO<StoreNetwork> {
         em.persist(storeNetwork);
     }
 
-    public void update(StoreNetwork storeNetwork) {
-        em.merge(storeNetwork);
+    public StoreNetwork update(StoreNetwork storeNetwork) {
+        return em.merge(storeNetwork);
     }
 
     public StoreNetwork findById(int id) {

@@ -17,9 +17,15 @@ public class StoresDAO implements DAO<Store> {
         return em.createNamedQuery("Store.findAll", Store.class).getResultList();
     }
 
-    @Transactional
     public void persist(Store store) {
         em.persist(store);
+        em.flush();
+    }
+
+    public Store update(Store s) {
+        Store r = em.merge(s);
+        em.flush();
+        return r;
     }
 
     public Store findById(int id) {

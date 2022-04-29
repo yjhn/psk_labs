@@ -18,10 +18,16 @@ public class CitiesDAO implements DAO<City> {
         return em.createNamedQuery("City.findAll", City.class).getResultList();
     }
 
-    @Transactional
     public void persist(City c) {
         em.persist(c);
         em.flush();
+    }
+
+    @Transactional
+    public City update(City c) {
+        City r = em.merge(c);
+        em.flush();
+        return r;
     }
 
     public City findById(int id) {
