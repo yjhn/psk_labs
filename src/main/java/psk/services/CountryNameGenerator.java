@@ -37,7 +37,7 @@ public class CountryNameGenerator implements Serializable {
         } else if (isNameGenerationRunning()) {
             return "country name is being generated...";
         }
-        return "Country name suggestion: " + generationTask.get();
+        return "country name suggestion: " + generationTask.get();
     }
 
     public String getResult() throws ExecutionException, InterruptedException {

@@ -25,10 +25,10 @@
     </h:form>
     <h:form>
         <h:commandButton value="Suggest country name"
-                         disabled="#{countryNameGenerator.isNameGenerationRunning()}"
+                         disabled="#{countryNameGenerator.nameGenerationRunning}"
                          actionListener="#{countryNameGenerator.generateNewCountryName}"/>
-        <h:commandButton value="Refresh" />
-        <h:outputText value="#{countryNameGenerator.countryNameGenerationStatus}" />
+        <h:commandButton rendered="#{countryNameGenerator.nameGenerationRunning}" value="Refresh" />
+        <h:outputText value=" #{countryNameGenerator.countryNameGenerationStatus}" />
     </h:form>
 </h:body>
 
