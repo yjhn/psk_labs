@@ -52,19 +52,24 @@ public class CitiesJPA {
             cities.update(cityToEdit);
         } catch (OptimisticLockException e) {
             out.println("Caught optimistic lock exception:\n" + e);
-            out.println("Retrying up to 3 times");
-            for(int i = 0; i < 3; ++i) {
-                City c = cities.findById(cityToEdit.getId());
-                c.setFullCityName(cityToEdit.getFullCityName());
-                c.setName(cityToEdit.getName());
-                c.setCountryName(cityToEdit.getCountryName());
-                out.println("Overwriting previous changes");
-                try {
-                    cities.update(c);
-                    break;
-                } catch (OptimisticLockException exc) {
-                    out.println("Caught optimistic lock exception:\n" + exc);
-                }
+            overwriteOtherChanges(cityToEdit);
+        }
+    }
+
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    private void overwriteOtherChanges(City city) {
+        out.println("Retrying up to 3 times");
+        for(int i = 0; i < 3; ++i) {
+            City c = cities.findById(city.getId());
+            c.setFullCityName(city.getFullCityName());
+            c.setName(city.getName());
+            c.setCountryName(city.getCountryName());
+            out.println("Overwriting previous changes");
+            try {
+                cities.update(c);
+                break;
+            } catch (OptimisticLockException exc) {
+                out.println("Caught optimistic lock exception:\n" + exc);
             }
         }
     }
